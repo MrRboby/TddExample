@@ -16,11 +16,11 @@ namespace Task1
                 throw new ArgumentException();
             this.array = array;
             this.firstIndex = firstIndex;
-            this.lastIndex = firstIndex + length;
+            this.lastIndex = firstIndex + length - 1;
         }
         public int Length
         {
-            get => this.lastIndex - this.firstIndex;
+            get => this.lastIndex - this.firstIndex + 1;
         }
         public double this[int index]
         {
