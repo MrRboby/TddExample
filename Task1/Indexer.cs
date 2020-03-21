@@ -12,6 +12,8 @@ namespace Task1
         int firstIndex, lastIndex;
         public Indexer(double[] array, int firstIndex, int length)
         {
+            if (firstIndex < 0 || firstIndex >= array.Length || length <= 0 || array.Length <= firstIndex + length)
+                throw new ArgumentException();
             this.array = array;
             this.firstIndex = firstIndex;
             this.lastIndex = firstIndex + length;
@@ -24,11 +26,15 @@ namespace Task1
         {
             get
             {
+                if (index < 0 || index >= this.Length)
+                    throw new IndexOutOfRangeException();
                 return this.array[index + firstIndex];
             }
             set
             {
-                this.array[index] = value;
+                if (index < 0 || index >= this.Length)
+                    throw new IndexOutOfRangeException();
+                this.array[index + firstIndex] = value;
             }
         }
 
