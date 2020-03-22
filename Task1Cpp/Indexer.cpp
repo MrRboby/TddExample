@@ -1,6 +1,7 @@
 #include "Indexer.h"
+#include <stdexcept>
 
-Indexer::Indexer(double* array, int firstIndex, int length) {
+Indexer::Indexer(double* array, int arrayLength, int firstIndex, int length) {
 	this->array = array;
 	this->firstIndex = firstIndex;
 	this->lastIndex = firstIndex + length - 1;
