@@ -8,5 +8,4 @@ public:
 	Indexer(double* array, int arrayLength, int firstIndex, int length);
 	int Length();
 	double& operator[] (const int index);
-	const double& operator[] (const int index) const;
 };

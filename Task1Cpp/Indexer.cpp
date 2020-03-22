@@ -16,7 +16,3 @@ int Indexer::Length() {
 double& Indexer::operator[] (const int index) {
 	return this->array[index + firstIndex];
 }
-
-const double& Indexer::operator[] (const int index) const {
-	return this->array[index + firstIndex];
-}
