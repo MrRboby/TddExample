@@ -14,5 +14,7 @@ int Indexer::Length() {
 }
 
 double& Indexer::operator[] (const int index) {
+	if (index < 0 || index >= Length())
+		throw std::out_of_range("Index out of range");
 	return this->array[index + firstIndex];
 }
