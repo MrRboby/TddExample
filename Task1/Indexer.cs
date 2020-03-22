@@ -12,7 +12,7 @@ namespace Task1
         int firstIndex, lastIndex;
         public Indexer(double[] array, int firstIndex, int length)
         {
-            if (firstIndex < 0 || firstIndex >= array.Length || length <= 0 || array.Length <= firstIndex + length)
+            if (firstIndex < 0 || length <= 0 || array.Length <= firstIndex + length)
                 throw new ArgumentException();
             this.array = array;
             this.firstIndex = firstIndex;
