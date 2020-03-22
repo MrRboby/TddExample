@@ -8,8 +8,8 @@
     <ProjectGuid>{0BB24013-6754-4310-A3FF-3CA94281217A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IndexerTest</RootNamespace>
-    <AssemblyName>IndexerTest</AssemblyName>
+    <RootNamespace>IndexerTestCSharp</RootNamespace>
+    <AssemblyName>IndexerTestCSharp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Task1\Task1.csproj">
+    <ProjectReference Include="..\Task1CSharp\Task1CSharp.csproj">
       <Project>{e7864de7-c97e-4f64-af39-31ec8db8a511}</Project>
-      <Name>Task1</Name>
+      <Name>Task1CSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

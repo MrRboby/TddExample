@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Task1;
-namespace IndexerTest
+using Task1CSharp;
+namespace IndexerTestCSHarp
 {
     [TestClass]
     public class UnitTest1
