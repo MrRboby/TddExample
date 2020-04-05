@@ -126,5 +126,33 @@ namespace LinearEquationTestCSharp
             le2.FillByRandom(-5, 10, 100);
             Assert.IsTrue(((double[])le1).SequenceEqual((double[])le2));
         }
+        [TestMethod]
+        public void AdditionWithSameCountOfCoefficients()
+        {
+            LinearEquation le1 = new LinearEquation(new double[3] { 1, 2, 3 });
+            LinearEquation le2 = new LinearEquation(new double[3] { 4, 5, 6 });
+            Assert.IsTrue((new double[3] { 5, 7, 9 }).SequenceEqual((double[])(le1 + le2)));
+        }
+        [TestMethod]
+        public void AdditionWithDifferentCountOfCoefficients()
+        {
+            LinearEquation le1 = new LinearEquation(new double[4] { 1, -5, 3, 7 });
+            LinearEquation le2 = new LinearEquation(new double[3] { 4, 5, 6 });
+            Assert.IsTrue((new double[4] { 5, 0, 9, 7 }).SequenceEqual((double[])(le1 + le2)));
+        }
+        [TestMethod]
+        public void SubstractionWithSameCountOfCoefficients()
+        {
+            LinearEquation le1 = new LinearEquation(new double[3] { 5, 2, 0 });
+            LinearEquation le2 = new LinearEquation(new double[3] { 1, 5, 1 });
+            Assert.IsTrue((new double[3] { 4, -3, -1 }).SequenceEqual((double[])(le1 - le2)));
+        }
+        [TestMethod]
+        public void SubstractionWithDifferentCountOfCoefficients()
+        {
+            LinearEquation le1 = new LinearEquation(new double[3] { 4, 5, 3 });
+            LinearEquation le2 = new LinearEquation(new double[4] { 1, 5, 6, 8 });
+            Assert.IsTrue((new double[4] { 3, 0, -3, -8 }).SequenceEqual((double[])(le1 - le2)));
+        }
     }
 }

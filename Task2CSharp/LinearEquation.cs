@@ -12,7 +12,9 @@ namespace Task2CSharp
         {
             string[] sArr = str.Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             if (sArr.Length == 0)
+            {
                 this.coefficients = new double[] { 0, 0 };
+            }
             else if (sArr.Length == 1)
             {
                 try
@@ -30,7 +32,9 @@ namespace Task2CSharp
                 try
                 {
                     for (int i = 0; i < sArr.Length; i++)
+                    {
                         this.coefficients[i] = double.Parse(sArr[i]);
+                    }
                 }
                 catch
                 {
@@ -42,7 +46,9 @@ namespace Task2CSharp
         public LinearEquation(IList<double> list)
         {
             if (list.Count == 0)
+            {
                 this.coefficients = new double[] { 0, 0 };
+            }
             else if (list.Count == 1)
             {
                 this.coefficients = new double[] { list[0], 0 };
@@ -102,6 +108,30 @@ namespace Task2CSharp
             {
                 this.coefficients[i] = Rand.NextDouble() * (maxValue - minValue) + minValue;
             }
+        }
+
+        public static LinearEquation operator +(LinearEquation le1, LinearEquation le2)
+        {
+            int count = Math.Max(le1.coefficients.Length, le2.coefficients.Length);
+            LinearEquation result = new LinearEquation(count);
+            for(int i = 0; i < count; i++)
+            {
+                result.coefficients[i] = ((i < le1.coefficients.Length) ? le1.coefficients[i] : 0) +
+                                         ((i < le2.coefficients.Length) ? le2.coefficients[i] : 0);
+            }
+            return result;
+        }
+
+        public static LinearEquation operator -(LinearEquation le1, LinearEquation le2)
+        {
+            int count = Math.Max(le1.coefficients.Length, le2.coefficients.Length);
+            LinearEquation result = new LinearEquation(count);
+            for (int i = 0; i < count; i++)
+            {
+                result.coefficients[i] = ((i < le1.coefficients.Length) ? le1.coefficients[i] : 0) -
+                                         ((i < le2.coefficients.Length) ? le2.coefficients[i] : 0);
+            }
+            return result;
         }
 
         public static implicit operator double[](LinearEquation le)
