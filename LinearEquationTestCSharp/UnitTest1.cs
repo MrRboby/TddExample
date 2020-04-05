@@ -196,5 +196,17 @@ namespace LinearEquationTestCSharp
             LinearEquation le2 = new LinearEquation(new double[3] { 1, 6, 3 });
             Assert.IsTrue(le1 != le2);
         }
+        [TestMethod]
+        public void TrueLinearEquation()
+        {
+            LinearEquation le = new LinearEquation(new double[3] { 1, 2, 1 });
+            Assert.IsTrue(le ? true : false);
+        }
+        [TestMethod]
+        public void FalseLinearEquation()
+        {
+            LinearEquation le = new LinearEquation(new double[3] { 2, 0, 0 });
+            Assert.IsFalse(le ? true : false);
+        }
     }
 }

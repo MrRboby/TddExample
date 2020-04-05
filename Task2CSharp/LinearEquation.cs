@@ -181,6 +181,27 @@ namespace Task2CSharp
             return !(le1 == le2);
         }
 
+        public static bool operator true(LinearEquation le)
+        {
+            if (le.coefficients[0] == 0)
+            {
+                return true;
+            }
+            for (int i = 1; i < le.coefficients.Length; i++)
+            {
+                if (le.coefficients[i] != 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool operator false(LinearEquation le)
+        {
+            return le ? false : true;
+        }
+
         public static implicit operator double[](LinearEquation le)
         {
             return le.coefficients;
