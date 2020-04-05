@@ -208,5 +208,23 @@ namespace LinearEquationTestCSharp
             LinearEquation le = new LinearEquation(new double[3] { 2, 0, 0 });
             Assert.IsFalse(le ? true : false);
         }
+        [TestMethod]
+        public void ToString()
+        {
+            LinearEquation le = new LinearEquation(new double[3] { 2, 1, 4 });
+            Assert.AreEqual("4x1+1x2+2=0", le.ToString());
+        }
+        [TestMethod]
+        public void ToStringWithMinus()
+        {
+            LinearEquation le = new LinearEquation(new double[3] { 2, -1, 4 });
+            Assert.AreEqual("4x1-1x2+2=0", le.ToString());
+        }
+        [TestMethod]
+        public void ToStringWithZeroArgument()
+        {
+            LinearEquation le = new LinearEquation(new double[4] { 2, 1, 0, 4 });
+            Assert.AreEqual("4x1+1x3+2=0", le.ToString());
+        }
     }
 }

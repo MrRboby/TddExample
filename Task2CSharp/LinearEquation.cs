@@ -202,6 +202,31 @@ namespace Task2CSharp
             return le ? false : true;
         }
 
+        public override string ToString()
+        {
+            string result = "";
+            for(int i = this.coefficients.Length - 1; i >= 0; i--)
+            {
+                if (this.coefficients[i] != 0)
+                {
+                    if (result != "")
+                    {
+                        if (this.coefficients[i] > 0)
+                        {
+                            result += "+";
+                        }
+                    }
+                    result += $"{this.coefficients[i]}";
+                    if (i != 0)
+                    {
+                        result += $"x{ this.coefficients.Length - i}";
+                    }
+                }
+            }
+            result += "=0";
+            return result;
+        }
+
         public static implicit operator double[](LinearEquation le)
         {
             return le.coefficients;
