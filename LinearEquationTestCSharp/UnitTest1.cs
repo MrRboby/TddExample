@@ -168,5 +168,12 @@ namespace LinearEquationTestCSharp
             double k = 3;
             Assert.IsTrue((new double[3] { -12, 0, 21 }).SequenceEqual((double[])(le * k)));
         }
+
+        [TestMethod]
+        public void UnaryMinus()
+        {
+            LinearEquation le = new LinearEquation(new double[3] { -2, 0, 4 });
+            Assert.IsTrue((new double[3] { 2, 0, -4 }).SequenceEqual((double[])(-le)));
+        }
     }
 }

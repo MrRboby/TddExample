@@ -149,6 +149,11 @@ namespace Task2CSharp
             return le * k;
         }
 
+        public static LinearEquation operator -(LinearEquation le)
+        {
+            return -1 * le;
+        }
+
         public static implicit operator double[](LinearEquation le)
         {
             return le.coefficients;
