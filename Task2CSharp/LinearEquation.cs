@@ -74,6 +74,36 @@ namespace Task2CSharp
             }
         }
 
+        public void FillByDuplicates(double number)
+        {
+            this.coefficients = Enumerable.Repeat(number, this.coefficients.Length).ToArray();
+        }
+        public void FillByRandom(int minValue, int maxValue, int seed)
+        {
+            if (maxValue < minValue)
+            {
+                throw new ArgumentException();
+            }
+            Random Rand = new Random(seed);
+            for(int i = 0; i < this.coefficients.Length; i++)
+            {
+                this.coefficients[i] = Rand.NextDouble() * (maxValue - minValue) + minValue;
+            }
+        }
+
+        public void FillByRandom(int minValue, int maxValue)
+        {
+            if (maxValue < minValue)
+            {
+                throw new ArgumentException();
+            }
+            Random Rand = new Random();
+            for (int i = 0; i < this.coefficients.Length; i++)
+            {
+                this.coefficients[i] = Rand.NextDouble() * (maxValue - minValue) + minValue;
+            }
+        }
+
         public static implicit operator double[](LinearEquation le)
         {
             return le.coefficients;

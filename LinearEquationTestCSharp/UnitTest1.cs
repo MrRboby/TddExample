@@ -101,5 +101,30 @@ namespace LinearEquationTestCSharp
             int n = -1;
             Assert.Equals(typeof(ArgumentException), new LinearEquation(n));
         }
+        [TestMethod]
+        public void FillByDuplicates()
+        {
+            int n = 4;
+            LinearEquation le = new LinearEquation(n);
+            le.FillByDuplicates(7.3);
+            Assert.IsTrue(new double[] { 7.3, 7.3, 7.3, 7.3 }.SequenceEqual((double[])le));
+        }
+        [TestMethod]
+        public void FillByRandomWithMinMoreThanMaxArguments()
+        {
+            int n = 3;
+            LinearEquation le = new LinearEquation(n);
+            Assert.ThrowsException<ArgumentException>(() => le.FillByRandom(100, 10));
+        }
+        [TestMethod]
+        public void FillByRandomWithEqualSeeds()
+        {
+            int n = 3;
+            LinearEquation le1 = new LinearEquation(n);
+            LinearEquation le2 = new LinearEquation(n);
+            le1.FillByRandom(-5, 10, 100);
+            le2.FillByRandom(-5, 10, 100);
+            Assert.IsTrue(((double[])le1).SequenceEqual((double[])le2));
+        }
     }
 }
