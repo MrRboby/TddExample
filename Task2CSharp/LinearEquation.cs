@@ -223,6 +223,10 @@ namespace Task2CSharp
                     }
                 }
             }
+            if (result == "")
+            {
+                result += "0";
+            }
             result += "=0";
             return result;
         }
