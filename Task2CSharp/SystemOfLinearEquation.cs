@@ -23,6 +23,26 @@ namespace Task2CSharp
             }
         }
 
+        public LinearEquation this[int i]
+        {
+            get
+            {
+                if (i < 0 || i >= this.equations.Length)
+                {
+                    throw new ArgumentException();
+                }
+                return this.equations[i];
+            }
+            set 
+            {
+                if (i < 0 || i >= this.equations.Length)
+                {
+                    throw new ArgumentException();
+                }
+                this.equations[i] = new LinearEquation(value);
+            }
+        }
+
         public override string ToString()
         {
             string result = "";
