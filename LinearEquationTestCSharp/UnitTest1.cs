@@ -154,5 +154,19 @@ namespace LinearEquationTestCSharp
             LinearEquation le2 = new LinearEquation(new double[4] { 1, 5, 6, 8 });
             Assert.IsTrue((new double[4] { 3, 0, -3, -8 }).SequenceEqual((double[])(le1 - le2)));
         }
+        [TestMethod]
+        public void LeftMultiplication()
+        {
+            LinearEquation le = new LinearEquation(new double[3] { 4, -5, 3 });
+            double k = 2;
+            Assert.IsTrue((new double[3] { 8, -10, 6 }).SequenceEqual((double[])(k * le)));
+        }
+        [TestMethod]
+        public void RightMultiplication()
+        {
+            LinearEquation le = new LinearEquation(new double[3] { -4, 0, 7 });
+            double k = 3;
+            Assert.IsTrue((new double[3] { -12, 0, 21 }).SequenceEqual((double[])(le * k)));
+        }
     }
 }

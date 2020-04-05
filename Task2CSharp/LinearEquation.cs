@@ -134,6 +134,21 @@ namespace Task2CSharp
             return result;
         }
 
+        public static LinearEquation operator *(LinearEquation le, double k)
+        {
+            LinearEquation result = new LinearEquation(le);
+            for(int i = 0; i < result.coefficients.Length; i++)
+            {
+                result.coefficients[i] *= k;
+            }
+            return result;
+        }
+
+        public static LinearEquation operator *(double k, LinearEquation le)
+        {
+            return le * k;
+        }
+
         public static implicit operator double[](LinearEquation le)
         {
             return le.coefficients;
