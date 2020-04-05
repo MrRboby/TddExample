@@ -154,6 +154,33 @@ namespace Task2CSharp
             return -1 * le;
         }
 
+        public static bool operator ==(LinearEquation le1, LinearEquation le2)
+        {
+            int count = Math.Max(le1.coefficients.Length, le2.coefficients.Length);
+            for(int i = 0; i < count; i++)
+            {
+                bool isInequality = (i < le1.coefficients.Length && 
+                                        i >= le2.coefficients.Length && 
+                                        le1.coefficients[i] != 0) ||
+                                    (i >= le1.coefficients.Length && 
+                                        i < le2.coefficients.Length && 
+                                        le2.coefficients[i] != 0) ||
+                                    (i < le1.coefficients.Length && 
+                                        i < le2.coefficients.Length && 
+                                        le1.coefficients[i] != le2.coefficients[i]);
+                if (isInequality)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool operator !=(LinearEquation le1, LinearEquation le2)
+        {
+            return !(le1 == le2);
+        }
+
         public static implicit operator double[](LinearEquation le)
         {
             return le.coefficients;

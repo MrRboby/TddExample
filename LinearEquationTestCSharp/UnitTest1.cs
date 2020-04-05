@@ -175,5 +175,26 @@ namespace LinearEquationTestCSharp
             LinearEquation le = new LinearEquation(new double[3] { -2, 0, 4 });
             Assert.IsTrue((new double[3] { 2, 0, -4 }).SequenceEqual((double[])(-le)));
         }
+        [TestMethod]
+        public void EqualityWithSameCountOfCoefficients()
+        {
+            LinearEquation le1 = new LinearEquation(new double[3] { 1, 2, 3 });
+            LinearEquation le2 = new LinearEquation(new double[3] { 1, 2, 3 });
+            Assert.IsTrue(le1 == le2);
+        }
+        [TestMethod]
+        public void EqualityWithDifferentCountOfCoefficients()
+        {
+            LinearEquation le1 = new LinearEquation(new double[3] { 1, 2, 3 });
+            LinearEquation le2 = new LinearEquation(new double[5] { 1, 2, 3, 0, 0 });
+            Assert.IsTrue(le1 == le2);
+        }
+        [TestMethod]
+        public void Inequality()
+        {
+            LinearEquation le1 = new LinearEquation(new double[3] { 1, 2, 3 });
+            LinearEquation le2 = new LinearEquation(new double[3] { 1, 6, 3 });
+            Assert.IsTrue(le1 != le2);
+        }
     }
 }
