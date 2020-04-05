@@ -12,7 +12,7 @@ namespace LinearEquationTestCSharp
         [TestMethod]
         public void StringConstructor()
         {
-            string s = "1 1.5 2.6 -4 89 13.4";
+            string s = "1 1,5 2,6 -4 89 13,4";
             LinearEquation le = new LinearEquation(s);
             Assert.IsTrue(new double[] { 1, 1.5, 2.6, -4, 89, 13.4 }.SequenceEqual((double[])le));
         }
@@ -22,6 +22,13 @@ namespace LinearEquationTestCSharp
             string s = "";
             LinearEquation le = new LinearEquation(s);
             Assert.IsTrue(new double[] { 0, 0 }.SequenceEqual((double[])le));
+        }
+        [TestMethod]
+        public void StringConstructorWithOneElement()
+        {
+            string s = "2";
+            LinearEquation le = new LinearEquation(s);
+            Assert.IsTrue(new double[] { 2, 0 }.SequenceEqual((double[])le));
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
@@ -91,8 +98,7 @@ namespace LinearEquationTestCSharp
         [ExpectedException(typeof(ArgumentException))]
         public void IntConstructorWithNegativeArgument()
         {
-            int n = 1;
-            LinearEquation le = new LinearEquation(n);
+            int n = -1;
             Assert.Equals(typeof(ArgumentException), new LinearEquation(n));
         }
     }
