@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include "../Task2Cpp/LinearEquation.h"
+#include "../Task2Cpp/LinearEquation.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -12,9 +13,8 @@ namespace LinearEquationTestCpp
 {
 	TEST_CLASS(LinearEquationTestCpp) {
 	public:
-		
 		TEST_METHOD(StringConstructor) {
-			std::string s = "1 1,5 2,6 -4 89 13,4";
+			std::string s = "1 1.5 2.6 -4 89 13.4";
 			std::vector<double> res = { 1, 1.5, 2.6, -4, 89, 13.4 };
 			LinearEquation le = LinearEquation(s);
 			Assert::IsTrue(res == (std::vector<double>)le);
@@ -31,9 +31,8 @@ namespace LinearEquationTestCpp
 			LinearEquation le = LinearEquation(s);
 			Assert::IsTrue(res == (std::vector<double>)le);
 		}
-		TEST_METHOD(StringConstructor) {
-			std::string s = "1 g 2.25 -5.7 helloworld 3 k";
-			Assert::ExpectException<std::invalid_argument>([&] { LinearEquation(s); });
+		TEST_METHOD(StringConstructorWithWrongArgument) {
+			Assert::ExpectException<std::invalid_argument>([] { LinearEquation("1 g 2.25 -5.7 helloworld 3 k"); });
 		}
 		TEST_METHOD(VectorConstructor) {
 			std::vector<double> input = { 0, -5.6, 4, 7 };
@@ -42,7 +41,7 @@ namespace LinearEquationTestCpp
 			Assert::IsTrue(res == (std::vector<double>)le);
 		}
 		TEST_METHOD(ArrayConstructor) {
-			double* input = new double[4] { 0, -5.6, 4, 7 };
+			double* input = new double[4]{ 0, -5.6, 4, 7 };
 			std::vector<double> res = { 0, -5.6, 4, 7 };
 			LinearEquation le = LinearEquation(input, 4);
 			Assert::IsTrue(res == (std::vector<double>)le);
@@ -92,7 +91,7 @@ namespace LinearEquationTestCpp
 		}
 		TEST_METHOD(IntConstructorWithNegativeArgument) {
 			int count = -1;
-			Assert::ExpectException<std::invalid_argument>([&]{ LinearEquation(count); });
+			Assert::ExpectException<std::invalid_argument>([] { LinearEquation(-1); });
 		}
 		TEST_METHOD(FillByDuplicates) {
 			int count = 4;
@@ -149,7 +148,7 @@ namespace LinearEquationTestCpp
 			Assert::IsTrue(result == (std::vector<double>)(le1 - le2));
 		}
 		TEST_METHOD(SubstractionWithDifferentCountOfCoefficients) {
-			std::vector<double> input1 = { 4, 5, 3};
+			std::vector<double> input1 = { 4, 5, 3 };
 			std::vector<double> input2 = { 1, 5, 6, 8 };
 			std::vector<double> result = { 3, 0, -3, -8 };
 			LinearEquation le1 = LinearEquation(input1);
@@ -157,20 +156,20 @@ namespace LinearEquationTestCpp
 			Assert::IsTrue(result == (std::vector<double>)(le1 - le2));
 		}
 		TEST_METHOD(LeftMultiplication) {
-			std::vector<double> input = { 4, 5, 3 };
+			std::vector<double> input = { 4, -5, 3 };
 			std::vector<double> result = { 8, -10, 6 };
 			LinearEquation le = LinearEquation(input);
 			double k = 2;
 			Assert::IsTrue(result == (std::vector<double>)(k * le));
 		}
 		TEST_METHOD(RightMultiplication) {
-			std::vector<double> input = { 4, 5, 3 };
+			std::vector<double> input = { 4, -5, 3 };
 			std::vector<double> result = { 8, -10, 6 };
 			LinearEquation le = LinearEquation(input);
 			double k = 2;
 			Assert::IsTrue(result == (std::vector<double>)(le * k));
 		}
-		TEST_METHOD(RightMultiplication) {
+		TEST_METHOD(Inverse) {
 			std::vector<double> input = { 2, 0, -4 };
 			std::vector<double> result = { -2, 0, 4 };
 			LinearEquation le = LinearEquation(input);
@@ -219,19 +218,19 @@ namespace LinearEquationTestCpp
 		}
 		TEST_METHOD(ToString) {
 			std::vector<double> input = { 2, 1, 4 };
-			std::string result = "4x2+1x1+2=0";
+			std::string result = "4.000000x2+1.000000x1+2.000000=0";
 			LinearEquation le = LinearEquation(input);
 			Assert::AreEqual(result, (std::string)le);
 		}
 		TEST_METHOD(ToStringWithMinus) {
 			std::vector<double> input = { 2, -1, 4 };
-			std::string result = "4x2-1x1+2=0";
+			std::string result = "4.000000x2-1.000000x1+2.000000=0";
 			LinearEquation le = LinearEquation(input);
 			Assert::AreEqual(result, (std::string)le);
 		}
 		TEST_METHOD(ToStringWithZeroArgument) {
 			std::vector<double> input = { 2, 1, 0, 4 };
-			std::string result = "4x3+1x1+2=0";
+			std::string result = "4.000000x3+1.000000x1+2.000000=0";
 			LinearEquation le = LinearEquation(input);
 			Assert::AreEqual(result, (std::string)le);
 		}

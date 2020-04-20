@@ -7,15 +7,17 @@ class LinearEquation
 private:
 	std::vector<double> coefficients;
 public:
+	LinearEquation();
 	LinearEquation(std::string str);
-	LinearEquation(std::vector<double> vec);
-	LinearEquation(double* arr, int size);
-	LinearEquation(LinearEquation& le);
+	LinearEquation(const std::vector<double>& vec);
+	LinearEquation(const double* const arr, int size);
+	LinearEquation(const LinearEquation& le);
 	LinearEquation(int count);
+	~LinearEquation() {};
 	void FillByDuplicates(double number);
 	void FillByRandom(double minValue, double maxValue, int seed);
 	void FillByRandom(double minValue, double maxValue);
-	int GetDegree();
+	int GetDegree() const;
 	friend const LinearEquation operator+(const LinearEquation& le1, const LinearEquation& le2);
 	friend const LinearEquation operator-(const LinearEquation& le1, const LinearEquation& le2);
 	friend const LinearEquation operator*(const LinearEquation& le, const double k);
