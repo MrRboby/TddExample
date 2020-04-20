@@ -175,7 +175,7 @@ namespace Task2CSharp
             int count = Math.Max(le1.coefficients.Length, le2.coefficients.Length);
             for(int i = 0; i < count; i++)
             {
-                bool isInequality = (i < le1.coefficients.Length && 
+                bool isInequal = (i < le1.coefficients.Length && 
                                         i >= le2.coefficients.Length && 
                                         le1.coefficients[i] != 0) ||
                                     (i >= le1.coefficients.Length && 
@@ -184,7 +184,7 @@ namespace Task2CSharp
                                     (i < le1.coefficients.Length && 
                                         i < le2.coefficients.Length && 
                                         le1.coefficients[i] != le2.coefficients[i]);
-                if (isInequality)
+                if (isInequal)
                 {
                     return false;
                 }
