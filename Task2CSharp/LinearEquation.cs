@@ -110,6 +110,22 @@ namespace Task2CSharp
             }
         }
 
+        public int Degree
+        {
+            get
+            {
+                int degree = 0;
+                for (int i = 0; i < this.coefficients.Length; i++)
+                {
+                    if (this.coefficients[i] != 0)
+                    {
+                        degree = i;
+                    }
+                }
+                return degree;
+            }
+        }
+
         public static LinearEquation operator +(LinearEquation le1, LinearEquation le2)
         {
             int count = Math.Max(le1.coefficients.Length, le2.coefficients.Length);
@@ -219,7 +235,7 @@ namespace Task2CSharp
                     result += $"{this.coefficients[i]}";
                     if (i != 0)
                     {
-                        result += $"x{ this.coefficients.Length - i}";
+                        result += $"x{i}";
                     }
                 }
             }

@@ -127,6 +127,18 @@ namespace LinearEquationTestCSharp
             Assert.IsTrue(((double[])le1).SequenceEqual((double[])le2));
         }
         [TestMethod]
+        public void Degree()
+        {
+            LinearEquation le = new LinearEquation(new double[3] { 1, 2, 3 });
+            Assert.AreEqual(2, le.Degree);
+        }
+        [TestMethod]
+        public void DegreeWithZeros()
+        {
+            LinearEquation le = new LinearEquation(new double[5] { 1, 2, 3, 0, 0 });
+            Assert.AreEqual(2, le.Degree);
+        }
+        [TestMethod]
         public void AdditionWithSameCountOfCoefficients()
         {
             LinearEquation le1 = new LinearEquation(new double[3] { 1, 2, 3 });
@@ -212,19 +224,19 @@ namespace LinearEquationTestCSharp
         public void ToString()
         {
             LinearEquation le = new LinearEquation(new double[3] { 2, 1, 4 });
-            Assert.AreEqual("4x1+1x2+2=0", le.ToString());
+            Assert.AreEqual("4x2+1x1+2=0", le.ToString());
         }
         [TestMethod]
         public void ToStringWithMinus()
         {
             LinearEquation le = new LinearEquation(new double[3] { 2, -1, 4 });
-            Assert.AreEqual("4x1-1x2+2=0", le.ToString());
+            Assert.AreEqual("4x2-1x1+2=0", le.ToString());
         }
         [TestMethod]
         public void ToStringWithZeroArgument()
         {
             LinearEquation le = new LinearEquation(new double[4] { 2, 1, 0, 4 });
-            Assert.AreEqual("4x1+1x3+2=0", le.ToString());
+            Assert.AreEqual("4x3+1x1+2=0", le.ToString());
         }
     }
 }

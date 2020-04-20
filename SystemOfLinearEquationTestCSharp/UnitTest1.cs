@@ -39,7 +39,7 @@ namespace SystemOfLinearEquationTestCSharp
         {
             SystemOfLinearEquation sle = new SystemOfLinearEquation(2);
             sle[0] = new LinearEquation(new double[] { 1, 2, 3 });
-            Assert.AreEqual("3x1+2x2+1=0", sle[0].ToString());
+            Assert.AreEqual("3x2+2x1+1=0", sle[0].ToString());
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
@@ -47,6 +47,15 @@ namespace SystemOfLinearEquationTestCSharp
         {
             SystemOfLinearEquation sle = new SystemOfLinearEquation(2);
             Assert.Equals(typeof(ArgumentException), sle[3] = new LinearEquation(new double[4] { 1, 2, 3, 6 }));
+        }
+        [TestMethod]
+        public void Triangular()
+        {
+            SystemOfLinearEquation sle = new SystemOfLinearEquation(2);
+            sle[0] = new LinearEquation(new double[] { 1, 2 });
+            sle[1] = new LinearEquation(new double[] { 1, 2, 6 });
+            sle.ToTriangular();
+            Assert.AreEqual("x2+x1+0.5=0\n4x2=0", sle.ToString());
         }
     }
 }

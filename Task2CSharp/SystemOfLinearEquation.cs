@@ -43,6 +43,11 @@ namespace Task2CSharp
             }
         }
 
+        public void ToTriangular()
+        {
+            
+        }
+
         public override string ToString()
         {
             string result = "";
