@@ -84,7 +84,7 @@ namespace Task2CSharp
         {
             this.coefficients = Enumerable.Repeat(number, this.coefficients.Length).ToArray();
         }
-        public void FillByRandom(int minValue, int maxValue, int seed)
+        public void FillByRandom(double minValue, double maxValue, int seed)
         {
             if (maxValue < minValue)
             {
@@ -97,7 +97,7 @@ namespace Task2CSharp
             }
         }
 
-        public void FillByRandom(int minValue, int maxValue)
+        public void FillByRandom(double minValue, double maxValue)
         {
             if (maxValue < minValue)
             {
