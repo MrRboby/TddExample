@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using Task2CSharp;
 
 namespace SystemOfLinearEquationTestCSharp
@@ -57,6 +58,37 @@ namespace SystemOfLinearEquationTestCSharp
             sle[2] = new LinearEquation(new double[] { 3, 2, 1, -2 });
             sle.ToTriangular();
             Assert.AreEqual("2x3+1x2-1x1-8=0\n0,5x2+0,5x1-1=0\n-1x1-1=0\n", sle.ToString());
+        }
+        [TestMethod]
+        public void Solve()
+        {
+            SystemOfLinearEquation sle = new SystemOfLinearEquation(3);
+            sle[0] = new LinearEquation(new double[] { -8, -1, 1, 2 });
+            sle[1] = new LinearEquation(new double[] { 11, 2, -1, -3 });
+            sle[2] = new LinearEquation(new double[] { 3, 2, 1, -2 });
+            Assert.IsTrue(new double[] { -1, 3, 2 }.SequenceEqual(sle.Solve()));
+        }
+        [TestMethod]
+        public void SolveWithSameEquations()
+        {
+            SystemOfLinearEquation sle = new SystemOfLinearEquation(4);
+            sle[0] = new LinearEquation(new double[] { -8, -1, 1, 2 });
+            sle[1] = new LinearEquation(new double[] { 11, 2, -1, -3 });
+            sle[2] = new LinearEquation(new double[] { 11, 2, -1, -3 });
+            sle[3] = new LinearEquation(new double[] { 3, 2, 1, -2 });
+            Assert.IsTrue(new double[] { -1, 3, 2 }.SequenceEqual(sle.Solve()));
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArithmeticException))]
+        public void SolveWithContradictoryEquations()
+        {
+            SystemOfLinearEquation sle = new SystemOfLinearEquation(4);
+            sle[0] = new LinearEquation(new double[] { -8, -1, 1, 2 });
+            sle[1] = new LinearEquation(new double[] { 11, 2, -1, -3 });
+            sle[2] = new LinearEquation(new double[] { 3, 2, 1, -2 });
+            sle[3] = new LinearEquation(new double[] { 4, 2, 2, -2 });
+            Assert.Equals(typeof(ArithmeticException), sle.Solve());
+
         }
     }
 }
