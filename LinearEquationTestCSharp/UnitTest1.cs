@@ -221,6 +221,19 @@ namespace LinearEquationTestCSharp
             Assert.IsFalse(le ? true : false);
         }
         [TestMethod]
+        public void Coefficient()
+        {
+            LinearEquation le = new LinearEquation(new double[3] { 2, 3, 1 });
+            Assert.AreEqual(3, le[1]);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void CoefficientOutOfRange()
+        {
+            LinearEquation le = new LinearEquation(new double[6] { 2, 3, 1, 0, 0, 0 });
+            Assert.Equals(typeof(ArgumentOutOfRangeException), le[4]);
+        }
+        [TestMethod]
         public void ToString()
         {
             LinearEquation le = new LinearEquation(new double[3] { 2, 1, 4 });

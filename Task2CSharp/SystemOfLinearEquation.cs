@@ -45,8 +45,23 @@ namespace Task2CSharp
 
         public void ToTriangular()
         {
-            
+            Array.Sort(this.equations, (x, y) => (-1 * x.Degree.CompareTo(y.Degree)));
+            int maxDegree = this.equations[0].Degree,
+                degreeLimit = Math.Max(maxDegree - this.equations.Length, 1),
+                numberOfEquation = 0;
+            for (int d = maxDegree; d >= degreeLimit; d--)
+            {
+                if (this.equations[numberOfEquation].Degree < d)
+                    continue;
+                for (int i = numberOfEquation + 1; i < this.equations.Length; i++)
+                {
+                    this.equations[i] = this.equations[i] - this.equations[numberOfEquation] * (this.equations[i][d] / this.equations[numberOfEquation][d]);
+                }
+                numberOfEquation += 1;
+            }
         }
+
+        
 
         public override string ToString()
         {

@@ -247,6 +247,16 @@ namespace Task2CSharp
             return result;
         }
 
+        public double this[int index]
+        {
+            get
+            {
+                if (index < 0 || index > this.Degree)
+                    throw new ArgumentOutOfRangeException();
+                return this.coefficients[index];
+            }
+        }
+
         public static implicit operator double[](LinearEquation le)
         {
             return le.coefficients;

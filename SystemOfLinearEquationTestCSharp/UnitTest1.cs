@@ -51,11 +51,12 @@ namespace SystemOfLinearEquationTestCSharp
         [TestMethod]
         public void Triangular()
         {
-            SystemOfLinearEquation sle = new SystemOfLinearEquation(2);
-            sle[0] = new LinearEquation(new double[] { 1, 2 });
-            sle[1] = new LinearEquation(new double[] { 1, 2, 6 });
+            SystemOfLinearEquation sle = new SystemOfLinearEquation(3);
+            sle[0] = new LinearEquation(new double[] { -8, -1, 1, 2 });
+            sle[1] = new LinearEquation(new double[] { 11, 2, -1, -3 });
+            sle[2] = new LinearEquation(new double[] { 3, 2, 1, -2 });
             sle.ToTriangular();
-            Assert.AreEqual("x2+x1+0.5=0\n4x2=0", sle.ToString());
+            Assert.AreEqual("2x3+1x2-1x1-8=0\n0,5x2+0,5x1-1=0\n-1x1-1=0\n", sle.ToString());
         }
     }
 }
