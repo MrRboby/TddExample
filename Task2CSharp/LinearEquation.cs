@@ -91,7 +91,7 @@ namespace Task2CSharp
                 throw new ArgumentException();
             }
             Random Rand = new Random(seed);
-            for(int i = 0; i < this.coefficients.Length; i++)
+            for (int i = 0; i < this.coefficients.Length; i++)
             {
                 this.coefficients[i] = Rand.NextDouble() * (maxValue - minValue) + minValue;
             }
@@ -130,7 +130,7 @@ namespace Task2CSharp
         {
             int count = Math.Max(le1.coefficients.Length, le2.coefficients.Length);
             LinearEquation result = new LinearEquation(count);
-            for(int i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
                 result.coefficients[i] = ((i < le1.coefficients.Length) ? le1.coefficients[i] : 0) +
                                          ((i < le2.coefficients.Length) ? le2.coefficients[i] : 0);
@@ -153,7 +153,7 @@ namespace Task2CSharp
         public static LinearEquation operator *(LinearEquation le, double k)
         {
             LinearEquation result = new LinearEquation(le);
-            for(int i = 0; i < result.coefficients.Length; i++)
+            for (int i = 0; i < result.coefficients.Length; i++)
             {
                 result.coefficients[i] *= k;
             }
@@ -173,16 +173,16 @@ namespace Task2CSharp
         public static bool operator ==(LinearEquation le1, LinearEquation le2)
         {
             int count = Math.Max(le1.coefficients.Length, le2.coefficients.Length);
-            for(int i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
-                bool isInequal = (i < le1.coefficients.Length && 
-                                        i >= le2.coefficients.Length && 
+                bool isInequal = (i < le1.coefficients.Length &&
+                                        i >= le2.coefficients.Length &&
                                         le1.coefficients[i] != 0) ||
-                                    (i >= le1.coefficients.Length && 
-                                        i < le2.coefficients.Length && 
+                                    (i >= le1.coefficients.Length &&
+                                        i < le2.coefficients.Length &&
                                         le2.coefficients[i] != 0) ||
-                                    (i < le1.coefficients.Length && 
-                                        i < le2.coefficients.Length && 
+                                    (i < le1.coefficients.Length &&
+                                        i < le2.coefficients.Length &&
                                         le1.coefficients[i] != le2.coefficients[i]);
                 if (isInequal)
                 {
@@ -221,16 +221,13 @@ namespace Task2CSharp
         public override string ToString()
         {
             string result = "";
-            for(int i = this.coefficients.Length - 1; i >= 0; i--)
+            for (int i = this.coefficients.Length - 1; i >= 0; i--)
             {
                 if (this.coefficients[i] != 0)
                 {
-                    if (result != "")
+                    if (result != "" && this.coefficients[i] > 0)
                     {
-                        if (this.coefficients[i] > 0)
-                        {
-                            result += "+";
-                        }
+                        result += "+";
                     }
                     result += $"{this.coefficients[i]}";
                     if (i != 0)
