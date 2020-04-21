@@ -9,7 +9,7 @@ public:
 	SystemOfLinearEquation(int size);
 	LinearEquation& operator[] (const int index);
 	void ToTriangular();
-	std::vector<double> Solve();
+	const std::vector<double> Solve();
 	operator std::string() const;
 };
 

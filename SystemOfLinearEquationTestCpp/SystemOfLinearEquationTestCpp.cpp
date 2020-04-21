@@ -5,6 +5,8 @@
 #include <vector>
 #include "../Task2Cpp/SystemOfLinearEquation.h"
 #include "../Task2Cpp/SystemOfLinearEquation.cpp"
+#include "../Task2Cpp/LinearEquation.h"
+#include "../Task2Cpp/LinearEquation.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -38,7 +40,7 @@ namespace SystemOfLinearEquationTestCpp
 			int size = 2;
 			SystemOfLinearEquation sle = SystemOfLinearEquation(size);
 			sle[0] = LinearEquation("1 2 3");
-			std::string result = "3x2+2x1+1=0";
+			std::string result = "3.000000x2+2.000000x1+1.000000=0";
 			Assert::AreEqual(result, (std::string)sle[0]);
 		}
 		TEST_METHOD(SetWithIncorrectArgument) {
@@ -53,8 +55,8 @@ namespace SystemOfLinearEquationTestCpp
 			sle[1] = LinearEquation("11 2 -1 -3");
 			sle[2] = LinearEquation("3 2 1 -2");
 			sle.ToTriangular();
-			std::string result = "2x3+1x2-1x1-8=0\n0,5x2+0,5x1-1=0\n-1x1-1=0\n";
-			Assert::AreEqual(result, (std::string)sle[0]);
+			std::string result = "2.000000x3+1.000000x2-1.000000x1-8.000000=0\n0.500000x2+0.500000x1-1.000000=0\n-1.000000x1-1.000000=0\n";
+			Assert::AreEqual(result, (std::string)sle);
 		}
 		TEST_METHOD(Solve) {
 			int size = 3;
