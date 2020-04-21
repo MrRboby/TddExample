@@ -82,8 +82,6 @@ namespace SystemOfLinearEquationTestCpp
 			sle[1] = LinearEquation("11 2 -1 -3");
 			sle[2] = LinearEquation("3 2 1 -2");
 			sle[3] = LinearEquation("4 2 2 -2");
-			std::vector<double> result = { -1, 3, 2 };
-			Assert::IsTrue(result == sle.Solve());
 			Assert::ExpectException<std::logic_error>([&] { sle.Solve(); });
 		}
 	};
